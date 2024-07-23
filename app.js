@@ -3,39 +3,47 @@ let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
 
+const msg = document.querySelector("#msg");
+
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#comp-score");
+
 const genComputerChoice = () => {
     const options = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * 3);
     return options[randomIndex];
-}       
+}    
+
+const draw = () => {
+    msg.textContent = "It's a tie! Play again!";
+    msg.style.backgroundColor = "#081b31";
+}
 
 const playGame = (userChoice) => {
-    //
-    console.log("player chosen: ", userChoice);
     const compChoice = genComputerChoice();
-    console.log("computer chose: ", compChoice);
 
     if (userChoice === compChoice) {
-        console.log("It's a tie!");
+        draw();
     } else if (
         (userChoice === "rock" && compChoice === "scissors") ||
         (userChoice === "paper" && compChoice === "rock") ||
         (userChoice === "scissors" && compChoice === "paper")
     ) {
-        console.log("Player wins!");
         userScore++;
+        userScorePara.textContent = userScore;
+        msg.textContent = "Player wins!";
+        msg.style.backgroundColor = "green";
     } else {
-        console.log("Computer wins!");
         compScore++;
+        compScorePara.textContent = compScore;
+        msg.textContent = "Player lost!"
+        msg.style.backgroundColor = "red";
     }
 }
 
 choices.forEach((choice) => {
     choice.addEventListener("click", () => {
-        // event generation on click and event handling on click is executing the function
-        // console.log("choice clicked");
         const userChoice = choice.id;
         playGame(userChoice);
-        // showWinner(userChoice, compChoice);
     })
 })
