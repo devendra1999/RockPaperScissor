@@ -22,8 +22,8 @@ h1 {
 
 .choice:hover {
   cursor: pointer;
-  /* opacity: 70%; */
   background-color: #005f1e;
+  transform: scale(1.2);
 }
 
 img {
