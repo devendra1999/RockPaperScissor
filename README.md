@@ -1,1 +1,1 @@
-Vanilla js and deploying built to check Nelify's (CI/CD)
+Vanilla js and deploying built of normal (js + css) to check it deployment capability on Nelify's (CI/CD)
